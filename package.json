@@ -1,0 +1,8 @@
+{
+  "name": "portrait-of-graduate-chatbot",
+  "version": "1.0.0",
+  "description": "NYS Portrait of a Graduate AI Chatbot",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.20.0"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYS Portrait of a Graduate Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>NYS Portrait of a Graduate</h1>
+      <p>Ask me anything about the framework</p>
+    </div>
+    <div class="role-selector">
+  <span>I am a:</span>
+  <button class="role-btn active" onclick="setRole('student', this)">Student</button>
+  <button class="role-btn" onclick="setRole('teacher', this)">Teacher</button>
+  <button class="role-btn" onclick="setRole('parent', this)">Parent</button>
+</div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        Hello, I am Inspire! I can answer questions about New York State's Portrait of a Graduate framework and instruct how to create lesson plans that fit curriculum standards. What would you like to know?
+      </div>
+      <div class="suggestions" id="suggestions">
+  <p>Try asking:</p>
+  <button onclick="fillInput('What is the NYS Portrait of a Graduate?')">
+    What is the Portrait of a Graduate?</button>
+  <button onclick="fillInput('What are the 6 competencies?')">
+    What are the 6 competencies?</button>
+  <button onclick="fillInput('When does this take effect?')">
+    When does this take effect?</button>
+  <button onclick="fillInput('How will students be assessed?')">
+    How will students be assessed?</button>
+</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput"
+        placeholder="Ask a question..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
