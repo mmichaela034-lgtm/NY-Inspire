@@ -1,3 +1,6 @@
+const Anthropic = require("@anthropic-ai/sdk");
+const { POG_KNOWLEDGE } = require("./knowledge");
+
 const SYSTEM_PROMPT = `You are an encouraging, knowledgeable instructional coach 
 helping students, teachers, and parents understand the New York State Portrait of 
 a Graduate framework — not just as policy, but as real skills they can develop and 
@@ -48,3 +51,35 @@ THINGS TO NEVER DO:
 - Never use acronyms without spelling them out first
 - Never give a one-sentence answer to a conceptual question
 - Never make a student feel behind or inadequate`;
+
+exports.handler = async function(event) {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
+  try {
+    const { message, history } = JSON.parse(event.body);
+    const client = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY
+    });
+    const messages = history || [];
+    messages.push({ role: "user", content: message });
+
+    const response = await client.messages.create({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1024,
+      system: SYSTEM_PROMPT,
+      messages: messages
+    });
+    const reply = response.content[0].text;
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reply })
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message })
+    };
+  }
+};
