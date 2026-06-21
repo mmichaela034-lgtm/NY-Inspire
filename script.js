@@ -38,7 +38,7 @@ async function sendMessage() {
     });
     const data = await res.json();
     const reply = data.reply || "Sorry, I could not get an answer.";
-    loadDiv.textContent = reply;
+    loadDiv.innerHTML = marked.parse(reply);
     loadDiv.className = "message bot-message";
     conversationHistory.push({ role: "assistant", content: reply });
   } catch (e) {

@@ -101,3 +101,32 @@ body {
   color: white;
   border-color: #1a3a5c;
 }
+.bot-message h1, .bot-message h2, .bot-message h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 10px 0 6px;
+  color: #1a3a5c;
+}
+.bot-message p {
+  margin: 0 0 8px;
+}
+.bot-message ul, .bot-message ol {
+  margin: 6px 0 10px 20px;
+}
+.bot-message li {
+  margin-bottom: 4px;
+}
+.bot-message strong {
+  color: #1a3a5c;
+}
+.bot-message hr {
+  border: none;
+  border-top: 1px solid #d8e0ea;
+  margin: 12px 0;
+}
+.bot-message code {
+  background: #eef2f7;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+}
